@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 
 import anon from '@/assets/images/anonymous_person.svg';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { deleteContact } from '@/app/thunks/contactsThunk';
 import { closeModal, Selectors } from '@/app/slices/contactDetailsSlice';
 
@@ -20,9 +20,17 @@ const ContactDetailsModal = () => {
   const isModalOpen = useAppSelector(Selectors.isModalOpen);
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleClose = () => {
     dispatch(closeModal());
+  };
+
+  const handleEdit = () => {
+    dispatch(closeModal());
+    if (contact) {
+      navigate(`edit/${contact?.id}`);
+    }
   };
 
   const handleDelete = async () => {
@@ -63,9 +71,7 @@ const ContactDetailsModal = () => {
             </CardContent>
           </Stack>
           <CardActions>
-            <Button component={Link} to={`edit/${contact?.id}`}>
-              Edit
-            </Button>
+            <Button onClick={handleEdit}>Edit</Button>
             <Button onClick={handleDelete}>Delete</Button>
           </CardActions>
         </Card>
