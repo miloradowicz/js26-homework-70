@@ -10,11 +10,12 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path='/' element={<PageLayout />} errorElement={<Page404 />}>
+        <Route path='/' element={<PageLayout />}>
           <Route index element={<Viewer />} />
           <Route path='new' element={<Editor />} />
           <Route path='edit/:id' element={<Editor />} />
         </Route>
+        <Route path='*' element={<Page404 />} />
       </Routes>
     </>
   );

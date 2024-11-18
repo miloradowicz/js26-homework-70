@@ -21,7 +21,7 @@ const ContactListItem: FC<Props> = ({ contact }) => {
   return (
     <Card
       variant='outlined'
-      sx={{ height: 100, display: 'flex', alignItems: 'center' }}
+      sx={{ height: 100, display: 'flex', alignItems: 'center', p: 1 }}
       onClick={handleClick}
     >
       <CardMedia

@@ -50,6 +50,8 @@ const Editor = () => {
       if (i) {
         const { id: _, ..._data } = i;
         setData(_data);
+      } else {
+        navigate('not-found');
       }
     }
   }, [id]);
